@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int  findDistance(int xrad,int yrad,int x,int y)
+    {
+        int edist = (x-xrad)*(x-xrad) + (y-yrad)*(y-yrad);
+        return static_cast<int>(sqrt(edist));
+    }
+    bool checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
+        if (x1 <= xCenter && xCenter <= x2 && y1 <= yCenter && yCenter <= y2) 
+        {
+            return true;
+        }
+        int closestxp = max(x1, min(xCenter, x2));
+        int closestyp = max(y1, min(yCenter, y2));
+
+        int dist = findDistance(xCenter,yCenter,closestxp,closestyp);
+        return dist<=radius ? true:false;
+    }
+};
