@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        vector<bool> visited(n, false); 
+        int remaining = n;           
+        int index = 0;                 
+
+        while (remaining > 1) {       
+            int steps = 0;
+            while (steps < k) 
+            {       
+                if (!visited[index]) { 
+                    steps++;
+                }
+                if (steps == k) break;
+                index = (index + 1) % n; 
+            }
+            visited[index] = true;   
+            remaining--;             
+            index = (index + 1) % n;  
+        }
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) 
+            {
+                return i + 1;        
+            }
+        }
+        return -1; 
+    }
+};
