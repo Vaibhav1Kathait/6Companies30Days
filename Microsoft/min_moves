@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minMoves2(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int minMoves = 0;
+        int lo = 0;
+        int hi = nums.size()-1;
+        int mid = hi + (lo-hi)/2;
+        for(int i=0;i<nums.size();i++)
+        {
+            int check = nums[mid];
+            minMoves+= abs(nums[mid]-nums[i]);
+        }
+        return minMoves;
+    }
+};
