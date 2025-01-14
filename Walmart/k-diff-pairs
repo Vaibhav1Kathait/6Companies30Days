@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int findPairs(vector<int>& nums, int k) {
+        if(k<0)
+        {
+            return 0;
+        } 
+        unordered_map<int,int>mp;
+        int count = 0;
+        for (int ele:nums) 
+        {
+            mp[ele]++;
+        }
+        for(auto& [ele,mp_count]:mp) 
+        {
+            if(k == 0) 
+            {
+                if(mp_count > 1) count++;
+            } else
+            {
+                if(mp.find(ele+k) != mp.end())
+                {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};
