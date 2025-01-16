@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxRotateFunction(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 0) return 0;
+        int sum = 0, currentFun = 0;
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
+            currentFun += i * nums[i];
+        }
+        int maxAns = currentFun;
+        for (int k = 1; k < n; k++) {
+            currentFun = currentFun + sum - n * nums[n - k];
+            maxAns = max(maxAns, currentFun);
+        }
+        return maxAns;
+    }
+};
