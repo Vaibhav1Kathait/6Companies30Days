@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isValidSerialization(string preorder) {
+        int places = 1;
+        string point;
+        stringstream ss(preorder);
+        while(getline(ss,point,','))
+        {
+            places--;
+            if(places < 0)
+            {
+                return false;
+            }
+            if(point != "#")
+            {
+                places += 2;
+            }
+
+        }
+        if(places == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+};
