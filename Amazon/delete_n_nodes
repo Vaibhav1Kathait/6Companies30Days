@@ -1,0 +1,32 @@
+class Solution {
+  public:
+    Node* linkdelete(Node* head, int n, int m) {
+        Node* current = head; 
+        Node* temp; 
+        while (current != nullptr) 
+        { 
+            for(int i = 1; i < m && current != nullptr; i++) 
+            { 
+                current = current->next; 
+                
+            } 
+            if(current == nullptr) 
+            { 
+                break; 
+                
+            } 
+            temp = current->next; 
+            for(int i = 1; i <= n && temp != nullptr; i++) 
+            { 
+                Node* nodeToDelete = temp; 
+                temp = temp->next; 
+                delete nodeToDelete; 
+                
+            } 
+            current->next = temp; 
+            current = temp; 
+            
+        } 
+        return head; 
+    }
+};
